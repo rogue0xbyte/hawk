@@ -1,5 +1,7 @@
 # **HAWK**
 
+[![CI Pipeline](https://github.com/rogue0xbyte/hawk/actions/workflows/tests.yaml/badge.svg)](https://github.com/rogue0xbyte/hawk/actions/workflows/tests.yaml)
+
 This repository aims to research on post-quantum cryptography "HAWK" signature scheme.
 This re-implements a toy version of the scheme as described [here](https://hawk-sign.info/hawk-spec.pdf) in Python.
 
