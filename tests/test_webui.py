@@ -564,8 +564,8 @@ class TestVisualizationContent:
 
         last_step = data["steps"][-1]
         assert (
-            "Result" in last_step["name"]  # noqa: W504
-            or "Verification" in last_step["name"]
+            "Result" in last_step["name"]  # noqa: W503, W504
+            or "Verification" in last_step["name"]  # noqa: W503, W504
         )
         assert "variables" in last_step
 
