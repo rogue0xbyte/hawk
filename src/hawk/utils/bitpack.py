@@ -18,7 +18,7 @@ def bits_to_bytes(bits):
         bits = bits + [0] * (8 - (len(bits) % 8))
     out = bytearray()
     for i in range(0, len(bits), 8):
-        chunk = bits[i:i + 8]
+        chunk = bits[i : i + 8]
         byte = 0
         for j, bit in enumerate(chunk):  # j=0 is MSB
             byte = (byte << 1) | (bit & 1)

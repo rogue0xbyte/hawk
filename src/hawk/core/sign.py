@@ -43,7 +43,7 @@ class HawkSign:
             for i in range(8):
                 h_bits.append((b >> i) & 1)
 
-        h1 = h_bits[self.param["n"]:self.param["n"] * 2]
+        h1 = h_bits[self.param["n"] : self.param["n"] * 2]
 
         low = self.param["lows1"]
         high = self.param["highs1"]
@@ -56,7 +56,7 @@ class HawkSign:
 
         for i in range(self.param["n"]):
             start = i * bits_per
-            chunk = h1[start:start + bits_per]
+            chunk = h1[start : start + bits_per]
             if len(chunk) < bits_per:
                 chunk += [0] * (bits_per - len(chunk))
             val = 0

@@ -1,8 +1,14 @@
-import pytest
+
 try:
     from hawk.utils.gr import CompressGR, DecompressGR
-except:
-    import sys, os; sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src")))
+except ModuleNotFoundError:
+    import sys
+    import os
+
+    sys.path.insert(
+        0,
+        os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src")),
+    )
     from hawk.utils.gr import CompressGR, DecompressGR
 
 

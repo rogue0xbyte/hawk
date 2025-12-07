@@ -1,15 +1,35 @@
 import unittest
 import tempfile
 import os
+
 try:
-    from hawk.cli import demo, gen_keys, sign_message, verify_message, save_key, load_key
-except:
-    import sys, os; sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src")))
-    from hawk.cli import demo, gen_keys, sign_message, verify_message, save_key, load_key
+    from hawk.cli import (
+        demo,
+        gen_keys,
+        sign_message,
+        verify_message,
+        load_key,
+    )
+except ModuleNotFoundError:
+    import sys
+    import os  # noqa: F811
+
+    sys.path.insert(
+        0,
+        os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src")),
+    )
+    from hawk.cli import (
+        demo,
+        gen_keys,
+        sign_message,
+        verify_message,
+        load_key,
+    )
 
 
 class Args:
     """Simple args container for CLI functions."""
+
     def __init__(self, **kwargs):
         self.__dict__.update(kwargs)
 
@@ -61,7 +81,9 @@ class TestHawkCLI(unittest.TestCase):
 
             # verify
             args_verify = Args(pkey=pk_path, msg=msg_path, sig=sig_path)
-            import io, sys
+            import io
+            import sys
+
             captured = io.StringIO()
             sys.stdout = captured
             verify_message(args_verify)
@@ -69,7 +91,6 @@ class TestHawkCLI(unittest.TestCase):
             X = captured.getvalue()
             print(X)
             self.assertIn("Verification result: True", X)
-
 
             tampered_msg = os.path.join(tmpdir, "msg2.txt")
             with open(tampered_msg, "w") as f:

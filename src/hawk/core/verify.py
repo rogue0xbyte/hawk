@@ -25,8 +25,8 @@ class HawkVerify:
         print(len(bits))
         if len(bits) != self.param["siglenbits"]:
             return False
-        saltbits = bits[:self.param["saltlenbits"]]
-        compbits = bits[self.param["saltlenbits"]:]
+        saltbits = bits[: self.param["saltlenbits"]]
+        compbits = bits[self.param["saltlenbits"] :]
 
         r = DecompressGR(
             compbits,
@@ -39,7 +39,7 @@ class HawkVerify:
         s1, consumed = r
 
         salt_bytes_b = bytes(
-            int("".join(str(b) for b in saltbits[i:i + 8][::-1]), 2)
+            int("".join(str(b) for b in saltbits[i : i + 8][::-1]), 2)
             for i in range(0, len(saltbits), 8)
         )
 
@@ -55,7 +55,7 @@ class HawkVerify:
         for b in h:
             for i in range(8):
                 h_bits.append((b >> i) & 1)
-        h1 = h_bits[self.param["n"]:self.param["n"] * 2]
+        h1 = h_bits[self.param["n"] : self.param["n"] * 2]
 
         low = self.param["lows1"]
         high = self.param["highs1"]
@@ -67,7 +67,7 @@ class HawkVerify:
         for i, sval in enumerate(s1):
 
             start = i * bits_per
-            chunk = h1[start:start + bits_per]
+            chunk = h1[start : start + bits_per]
             if len(chunk) < bits_per:
                 chunk += [0] * (bits_per - len(chunk))
             val = 0

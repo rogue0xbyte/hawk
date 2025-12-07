@@ -40,7 +40,7 @@ def DecompressGR(bits, k, low, high):
         return None
     svec = []
     for i in range(k):
-        chunk = bits[i * bits_per:(i + 1) * bits_per]
+        chunk = bits[i * bits_per : (i + 1) * bits_per]
         code = _int_from_bits_le(chunk)
         v = code + low
         svec.append(v)

@@ -49,7 +49,7 @@ jobs:
 
       - name: Run flake8
         run: |
-          flake8 --exclude venv,.venv,env,build,dist,__pycache__,.git
+          flake8 --exclude venv,.venv,env,build,dist,__pycache__,.git --ignore E203
 
       # -------------------------
       # SAST Scanning (Bandit)
