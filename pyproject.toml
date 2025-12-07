@@ -1,0 +1,35 @@
+[project]
+name = "hawk"
+version = "0.1.0"
+description = "Implementation of HAWK Post-Quantum Cryptographic Algorithm"
+authors = [
+    {name = "rogue0xbyte"}
+]
+license = {text = "Apache-2.0"}
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "cryptography (>=46.0.3,<47.0.0)",
+    "numpy (>=2.3.5,<3.0.0)",
+    "pytest (>=9.0.1,<10.0.0)",
+    "pytest-cov (>=7.0.0,<8.0.0)"
+]
+
+
+[project.scripts]
+hawk = "hawk.cli:main"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q --strict-markers"
+testpaths = [
+    "tests",
+]
+filterwarnings = [
+    "ignore::UserWarning",
+    "ignore::DeprecationWarning",
+]
