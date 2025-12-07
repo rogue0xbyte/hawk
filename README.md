@@ -33,6 +33,23 @@ simplified compared to that in HAWK-AC22.
 
 ### Installation
 
+#### Docker
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone git@github.com:rogue0xbyte/hawk.git
+   cd hawk
+   ```
+
+2. **Build the Docker image**:
+
+   ```bash
+   docker build -t hawk .
+   ```
+
+#### Local
+
 1. **Clone the repository**:
 
    ```bash
@@ -52,7 +69,38 @@ simplified compared to that in HAWK-AC22.
    eval $(poetry env activate)
    ```
 
-### Usage
+## Usage
+
+### Docker
+
+**To run interactively on the web**:
+```bash
+webui
+```
+You will have to make sure Docker's Networking is accessible from your local system.
+
+**To run a demo script**:
+```bash
+hawk demo
+```
+
+**To generate re-usable keys and run**:
+```bash
+# generate keys
+mkdir demo; hawk gen-keys --outdir ./demo/keys/
+# write message
+echo "<your message>" > demo/msg.txt
+# sign
+hawk sign --skey ./demo/keys/sk.bin --msg demo/msg.txt --sig demo/sig.bin
+# verify
+hawk verify --skey ./demo/keys/pk.bin --msg demo/msg.txt --sig demo/sig.bin
+# write faux message
+echo "tamper/faux message" > demo/faux.txt
+# verify
+hawk verify --skey ./demo/keys/pk.bin --msg demo/faux.txt --sig demo/sig.bin
+```
+
+### CLI
 
 **To run interactively on the web**:
 ```bash
