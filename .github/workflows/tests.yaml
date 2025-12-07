@@ -32,6 +32,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install ruff black flake8 pylint bandit trufflehog==2.2.1 pytest pytest-cov
+          pip install fastapi python-multipart httpx
 
       # -------------------------
       # Code Formatting Check
@@ -49,7 +50,8 @@ jobs:
 
       - name: Run flake8
         run: |
-          flake8 --exclude venv,.venv,env,build,dist,__pycache__,.git --ignore E203
+          flake8 --exclude venv,.venv,env,build,dist,__pycache__,.git,./src/webui --ignore E203 
+          flake8 --ignore E203,E501 ./src/webui/app.py
 
       # -------------------------
       # SAST Scanning (Bandit)

@@ -54,6 +54,11 @@ simplified compared to that in HAWK-AC22.
 
 ### Usage
 
+**To run interactively on the web**:
+```bash
+poetry run webui
+```
+
 **To run a demo script**:
 ```bash
 poetry run hawk demo --seed 0 --param hawk-512
