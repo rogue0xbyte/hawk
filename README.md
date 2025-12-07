@@ -73,6 +73,11 @@ simplified compared to that in HAWK-AC22.
 
 ### Docker
 
+> **\[STEP 1\] Open the Container CLI**:
+> ```bash
+> docker run -it --rm -v ${PWD}/demo:/app/demo hawk /bin/bash
+> ```
+
 **To run interactively on the web**:
 ```bash
 webui
