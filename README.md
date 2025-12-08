@@ -98,11 +98,11 @@ echo "<your message>" > demo/msg.txt
 # sign
 hawk sign --skey ./demo/keys/sk.bin --msg demo/msg.txt --sig demo/sig.bin
 # verify
-hawk verify --skey ./demo/keys/pk.bin --msg demo/msg.txt --sig demo/sig.bin
+hawk verify --pkey ./demo/keys/pk.bin --msg demo/msg.txt --sig demo/sig.bin
 # write faux message
 echo "tamper/faux message" > demo/faux.txt
 # verify
-hawk verify --skey ./demo/keys/pk.bin --msg demo/faux.txt --sig demo/sig.bin
+hawk verify --pkey ./demo/keys/pk.bin --msg demo/faux.txt --sig demo/sig.bin
 ```
 
 ### CLI
@@ -126,11 +126,11 @@ echo "<your message>" > demo/msg.txt
 # sign
 poetry run hawk sign --skey ./demo/keys/sk.bin --msg demo/msg.txt --sig demo/sig.bin
 # verify
-poetry run hawk verify --skey ./demo/keys/pk.bin --msg demo/msg.txt --sig demo/sig.bin
+poetry run hawk verify --pkey ./demo/keys/pk.bin --msg demo/msg.txt --sig demo/sig.bin
 # write faux message
 echo "tamper/faux message" > demo/faux.txt
 # verify
-poetry run hawk verify --skey ./demo/keys/pk.bin --msg demo/faux.txt --sig demo/sig.bin
+poetry run hawk verify --pkey ./demo/keys/pk.bin --msg demo/faux.txt --sig demo/sig.bin
 ```
 
 ## How This Project Differs From HAWK PQC
