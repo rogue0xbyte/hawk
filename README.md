@@ -133,6 +133,14 @@ echo "tamper/faux message" > demo/faux.txt
 poetry run hawk verify --skey ./demo/keys/pk.bin --msg demo/faux.txt --sig demo/sig.bin
 ```
 
+## How This Project Differs From HAWK PQC
+
+### **1. A Simplified Key Generator, no NTRUSolve**
+   In real NTRU/Falcon/HAWK cryptography, key generation must run **NTRUSolve**, an algorithm that finds a special pair of *short* polynomials `(f, g)` that form the secret **trapdoor**. This requires large lattices, FFT, Gram–Schmidt, Gaussian sampling, constant-time logic. This project **does not implement NTRUSolve** because it is a **toy implementation**, meant for testing and API exploration, not full cryptographic security. Instead of generating a real NTRU trapdoor, `HawkKeyGen` simply produces keys directly, and signing uses a simplified sampler that does *not* depend on an NTRU trapdoor.
+   
+### **2. Lightweight Signing Algorithm, no Discrete Gaussian Sampling**
+   `HawkSign` signs messages using simplified lattice-like arithmetic. No recursive Gaussian sampling. Uses Box–Muller to generate continuous Gaussian noise, converts it to integers by rounding. Deterministic for testing and works fine for benchmarking.
+
 ## License
 
 Licensed under the Apache License 2.0. See `LICENSE` file for details.
